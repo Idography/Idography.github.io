@@ -1,13 +1,22 @@
+const CURRENCY = {
+    "USD": "$",
+    "NIS": "₪"
+};
+
 function load() {
     Module.load("UI", "Popup", "Typewriter").then(() => {
         // Load the images
         loadImages();
+        // Show home and animate text
+        UI.show("home");
+        for (let paragraph of document.getElementsByTagName("p"))
+            Typewriter.type(paragraph);
     }).catch(console.warn);
 }
 
 function loadImages() {
     // Fetch index
-    fetch("Images/Index.csv").then((response) => {
+    fetch("https://idography.com/Images/Index.csv").then((response) => {
         // Parse as CSV
         response.text().then((csv) => {
             // Split
@@ -17,14 +26,23 @@ function loadImages() {
                 // Trim index
                 index = index.trim();
                 // Load information
-                fetch("Images/Contents/" + index + "/Information.json").then((response) => {
+                fetch("https://idography.com/Images/Contents/" + index + "/Information.json").then((response) => {
                     // Parse as JSON
-                    response.json().then((json)=>{
-
+                    response.json().then((json) => {
+                        if (json.hasOwnProperty("metadata") && json.hasOwnProperty("price")) {
+                            // Populate a template and append it
+                            let view = UI.populate("image-view", {
+                                index: index,
+                                name: json.metadata.name,
+                                description: json.metadata.description,
+                                price: json.price.value,
+                                currency: CURRENCY[json.price.currency]
+                            });
+                            // Append view
+                            UI.find("images").appendChild(view);
+                        }
                     });
                 });
-                // Populate a template and append it
-                let view = UI.populate("image-view", {});
             }
         });
     }).catch(console.warn);

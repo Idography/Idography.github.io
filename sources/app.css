@@ -1,10 +1,14 @@
 :root {
-    --theme: #FFFFFF;
-    --passive: #333344;
-    --active: #777788;
-    --coaster: #DDDDEE;
+    --theme: #333333;
+    --passive: #DDDDDD;
+    --active: #AAAAAA;
+    --coaster: #666666;
 }
 
 body {
     max-width: 460px;
+}
+
+* {
+    font-family: "Raleway", sans-serif !important;
 }

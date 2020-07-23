@@ -12,11 +12,11 @@
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, minimal-ui"/>
     <!-- Mobile -->
-    <meta name="theme-color" content="#FFFFFF"/>
+    <meta name="theme-color" content="#333333"/>
     <meta name="mobile-web-app-capable" content="yes">
     <!-- Mobile Safari -->
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="apple-mobile-web-app-title" content="AppName"/>
+    <meta name="apple-mobile-web-app-title" content="Idography | Images"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
     <!-- Icons -->
     <link rel="icon" href="resources/images/icons/icon.png"/>
@@ -32,13 +32,50 @@
     <!-- No Script -->
     <noscript></noscript>
     <!-- Additional -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@500">
+    <!-- Templates -->
     <template id="image-view">
-        <div id="image-${id}">
-
+        <div style="background: var(--coaster); border-radius: 1vh; padding: 2vh; margin: 2vh;" id="image-${index}">
+            <div style="background: url('https://idography.com/Images/Contents/${index}/Image.jpg') center; background-size: cover; height: 30vh; width: auto; border-radius: 1vh;"></div>
+            <p left medium>${name}</p>
+            <p left small>${description}</p>
+            <div row>
+                <p button large center>${currency}${price}</p>
+                <a button medium center href="mailto:purchase@idography.com?subject=I%20want%20to%20purchase%20your%20${name}%20picture&body=I%20found%20your%20picture%20on%20Idography.com%20and%20I%20would%20like%20to%20purchase%20it.">Purchase</a>
+            </div>
         </div>
     </template>
+    <!-- Extras -->
 </head>
 <body onload="load()" column>
-<p>Initial</p>
+<div id="home" hidden>
+    <p huge left style="margin: 4vh 1vh;">Idography // Welcome</p>
+    <p medium left>Purchase my pictures through here.</p>
+    <div>
+        <button medium left onclick="UI.view('gallery')">Gallery</button>
+        <button medium left onclick="UI.view('contact')">Contact</button>
+        <button medium left onclick="UI.view('about')">About</button>
+    </div>
+</div>
+<div id="gallery" hidden>
+    <p huge left style="margin: 4vh 1vh;">Idography // Gallery</p>
+    <div id="images"></div>
+</div>
+<div id="contact" hidden>
+    <p huge left style="margin: 4vh 1vh;">Idography // Contact</p>
+    <p medium left>You can contact me through these means of communication:</p>
+    <div>
+        <a button medium left href="mailto:purchase@idography.com">Sales Email</a>
+        <a button medium left href="mailto:ido@idography.com">Personal Email</a>
+    </div>
+</div>
+<div id="about" hidden>
+    <p huge left style="margin: 4vh 1vh;">Idography // About</p>
+    <p medium left>I'm an amateur photographer and light videographer. This is my website.</p>
+    <div row>
+        <a button medium center href="https://instagram.com/IdographyMedia">Instagram</a>
+        <a button medium center href="https://wa.me/?text=https://Idography.com">Share</a>
+    </div>
+</div>
 </body>
 </html>
