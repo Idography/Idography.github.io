@@ -40,7 +40,7 @@
             <p left medium>${name}</p>
             <p left small>${description}</p>
             <div row>
-                <p button large center>${currency}${price}</p>
+                <button button large center onclick="Popup.alert('Price of ${name}', 'The price of ${name} is ${currency}${price}.')">${currency}${price}</button>
                 <a button medium center href="mailto:purchase@idography.com?subject=I%20want%20to%20purchase%20your%20${name}%20picture&body=I%20found%20your%20picture%20on%20Idography.com%20and%20I%20would%20like%20to%20purchase%20it.">Purchase</a>
             </div>
         </div>
